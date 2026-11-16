@@ -1,0 +1,27 @@
+name: DevOps Lab 13
+
+on:
+  workflow_dispatch:
+
+jobs:
+  security-lab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Task 1 - Users
+        run: bash scripts/task1.sh
+
+      - name: Task 2 - Logs
+        run: bash scripts/task2.sh
+
+      - name: Task 3 - Fail2Ban
+        run: bash scripts/task3.sh
+
+      - name: Task 4 - Firewall
+        run: bash scripts/task4.sh
+
+      - name: Task 5 - SSH
+        run: bash scripts/task5.sh
