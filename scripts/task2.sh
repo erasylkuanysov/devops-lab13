@@ -1,13 +1,14 @@
 #!/bin/bash
-set -e
 
-sudo useradd -m devuser
-sudo groupadd devgroup
-sudo usermod -aG devgroup devuser
+echo "=== 2-тапсырма: Логтарды талдау ==="
 
-sudo touch /home/dev_data.txt
-sudo chown devuser:devgroup /home/dev_data.txt
-sudo chmod 640 /home/dev_data.txt
+echo "Соңғы 20 кіру әрекеті:"
+last -n 20 || true
 
-ls -l /home/dev_data.txt
-id devuser
+echo "SSH журналдары:"
+sudo journalctl -u ssh --no-pager -n 20 || true
+
+echo "Сәтсіз кіру әрекеттері:"
+sudo journalctl --no-pager | grep "Failed password" || true
+
+echo "2-тапсырма аяқталды!"
