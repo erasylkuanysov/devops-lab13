@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+sudo apt-get install -y ufw
+
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+
+sudo ufw status verbose
